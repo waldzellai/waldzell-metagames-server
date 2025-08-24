@@ -1,0 +1,25 @@
+{
+  "name": "waldzell-metagames",
+  "version": "1.17.0",
+  "type": "module",
+  "module": "./src/index.ts",
+  "bin": {
+    "waldzell-metagames": "./.smithery/index.cjs"
+  },
+  "scripts": {
+    "build": "npx @smithery/cli build src/index.ts",
+    "build:stdio": "npx @smithery/cli build src/index.ts --transport stdio",
+    "build:shttp": "npx @smithery/cli build src/index.ts --transport shttp",
+    "dev": "npx @smithery/cli dev",
+    "inspector": "npx @modelcontextprotocol/inspector ./.smithery/index.cjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "tsx": "^4.20.4",
+    "typescript": "^5.3.3"
+  }
+}
