@@ -2,7 +2,7 @@ import { readFile } from 'fs/promises';
 import { join } from 'path';
 import { GetMetagameSchema } from '../types.js';
 
-const METAGAMES_PATH = process.cwd() + '/metagames';
+const METAGAMES_PATH = process.env.WALDZELL_METAGAMES_PATH ?? join(process.cwd(), 'metagames');
 
 export async function getMetagame(args: any) {
   const parsedArgs = GetMetagameSchema.parse(args);
