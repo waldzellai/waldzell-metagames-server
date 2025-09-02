@@ -31,7 +31,6 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           properties: {
             name: {
               type: "string",
-              enum: ["ulysses-protocol", "refactoring-game", "mcp-server-implementation-game"],
               description: "Name of the metagame to retrieve"
             }
           },

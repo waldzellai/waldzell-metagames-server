@@ -1,0 +1,41 @@
+{
+  "subcategory": "code-quality",
+  "displayName": "Code Quality",
+  "description": "Metagames focused on improving code quality through review, refactoring, and best practices",
+  "metagames": [
+    {
+      "id": "code-review-game",
+      "name": "Code Review Game",
+      "displayName": "Code Review Game",
+      "type": "game",
+      "complexity": "intermediate",
+      "estimatedDuration": "2h",
+      "prerequisites": [],
+      "relatedMetagames": ["refactoring-game", "docs-verification-game"],
+      "tags": ["code-review", "quality", "collaboration", "feedback"],
+      "objectives": [
+        "Improve code review effectiveness",
+        "Establish consistent review standards",
+        "Reduce defect introduction rate"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "id": "refactoring-game",
+      "name": "Refactoring Game",
+      "displayName": "Refactoring Game",
+      "type": "game",
+      "complexity": "advanced",
+      "estimatedDuration": "4h",
+      "prerequisites": ["code-review-game"],
+      "relatedMetagames": ["complexity-navigator", "debugging-hypothesis-to-spec-game"],
+      "tags": ["refactoring", "code-quality", "technical-debt", "architecture"],
+      "objectives": [
+        "Systematically improve code structure",
+        "Reduce technical debt",
+        "Enhance maintainability"
+      ],
+      "version": "2.1.0"
+    }
+  ]
+}

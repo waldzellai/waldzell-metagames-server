@@ -1,0 +1,141 @@
+{
+  "categories": [
+    {
+      "id": "01-software-development",
+      "name": "Software Development",
+      "description": "Metagames for code quality, testing, documentation, and architecture",
+      "subcategories": [
+        {
+          "id": "code-quality",
+          "name": "Code Quality",
+          "description": "Improving code through review and refactoring"
+        },
+        {
+          "id": "debugging-testing",
+          "name": "Debugging & Testing",
+          "description": "Finding and fixing bugs, test creation"
+        },
+        {
+          "id": "documentation",
+          "name": "Documentation",
+          "description": "Creating and maintaining documentation"
+        },
+        {
+          "id": "architecture",
+          "name": "Architecture",
+          "description": "System design and architectural decisions"
+        }
+      ]
+    },
+    {
+      "id": "02-product-development",
+      "name": "Product Development",
+      "description": "Metagames for feature ideation, implementation, and innovation",
+      "subcategories": [
+        {
+          "id": "ideation",
+          "name": "Ideation",
+          "description": "Feature discovery and specification"
+        },
+        {
+          "id": "implementation",
+          "name": "Implementation",
+          "description": "Building features and functionality"
+        },
+        {
+          "id": "innovation",
+          "name": "Innovation",
+          "description": "Creative problem-solving and exploration"
+        }
+      ]
+    },
+    {
+      "id": "03-project-management",
+      "name": "Project Management",
+      "description": "Metagames for planning, resource allocation, and execution",
+      "subcategories": [
+        {
+          "id": "planning",
+          "name": "Planning",
+          "description": "Project planning and milestone management"
+        },
+        {
+          "id": "resource-allocation",
+          "name": "Resource Allocation",
+          "description": "Optimizing resource usage and prioritization"
+        },
+        {
+          "id": "execution",
+          "name": "Execution",
+          "description": "Sprint execution and delivery"
+        }
+      ]
+    },
+    {
+      "id": "04-operations-research",
+      "name": "Operations Research",
+      "description": "Metagames for optimization, constraints, and uncertainty",
+      "subcategories": [
+        {
+          "id": "constraint-analysis",
+          "name": "Constraint Analysis",
+          "description": "Identifying and resolving bottlenecks"
+        },
+        {
+          "id": "multi-objective",
+          "name": "Multi-Objective Optimization",
+          "description": "Balancing competing objectives"
+        },
+        {
+          "id": "risk-uncertainty",
+          "name": "Risk & Uncertainty",
+          "description": "Managing risk and uncertainty"
+        }
+      ]
+    },
+    {
+      "id": "05-mcp-ecosystem",
+      "name": "MCP Ecosystem",
+      "description": "Metagames specific to MCP development",
+      "subcategories": [
+        {
+          "id": "server-development",
+          "name": "Server Development",
+          "description": "Building MCP servers"
+        },
+        {
+          "id": "quality-assurance",
+          "name": "Quality Assurance",
+          "description": "Testing and validating MCP implementations"
+        }
+      ]
+    },
+    {
+      "id": "06-meta-learning",
+      "name": "Meta-Learning & Frameworks",
+      "description": "Metagames for learning and knowledge systems",
+      "subcategories": [
+        {
+          "id": "learning-systems",
+          "name": "Learning Systems",
+          "description": "Accelerated learning frameworks"
+        },
+        {
+          "id": "knowledge-extraction",
+          "name": "Knowledge Extraction",
+          "description": "Extracting and distilling wisdom"
+        },
+        {
+          "id": "protocols",
+          "name": "Protocols",
+          "description": "High-stakes decision protocols"
+        },
+        {
+          "id": "templates",
+          "name": "Templates",
+          "description": "Reusable metagame templates"
+        }
+      ]
+    }
+  ]
+}

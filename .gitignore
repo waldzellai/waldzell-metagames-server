@@ -57,5 +57,9 @@ tmp/
 temp/
 
 model-context-protocol-resources/
-metagames/
+reference-clearthought-onepointfive/
 specs/
+docs/
+
+.claude/
+.clinerules/

@@ -1,8 +1,10 @@
 {
-  "name": "waldzell-metagames",
-  "version": "1.17.0",
+  "name": "@waldzellai/metagames-mcp",
+  "version": "2.0.0",
+  "description": "MCP server providing game-theoretic workflows and problem-solving frameworks for software development, project management, and operations research",
   "type": "module",
   "module": "./src/index.ts",
+  "main": "./.smithery/index.cjs",
   "bin": {
     "waldzell-metagames": "./.smithery/index.cjs"
   },
@@ -11,7 +13,51 @@
     "build:stdio": "npx @smithery/cli build src/index.ts --transport stdio",
     "build:shttp": "npx @smithery/cli build src/index.ts --transport shttp",
     "dev": "npx @smithery/cli dev",
-    "inspector": "npx @modelcontextprotocol/inspector ./.smithery/index.cjs"
+    "inspector": "npx @modelcontextprotocol/inspector ./.smithery/index.cjs",
+    "test:sandbox-harness": "tsx ./test-harness/index.ts",
+    "prepublishOnly": "npm run build",
+    "version": "npm run build && git add -A",
+    "postversion": "git push && git push --tags"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "metagames",
+    "game-theory",
+    "operations-research",
+    "problem-solving",
+    "workflows",
+    "software-development",
+    "project-management",
+    "refactoring",
+    "debugging",
+    "optimization",
+    "waldzell"
+  ],
+  "author": "B.C. Nims",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waldzell/metagames-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/waldzell/metagames-mcp-server/issues"
+  },
+  "homepage": "https://github.com/waldzell/metagames-mcp-server#readme",
+  "files": [
+    "dist/",
+    ".smithery/",
+    "src/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.1",
