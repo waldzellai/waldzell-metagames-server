@@ -1,6 +1,5 @@
-import { readFile, access } from 'fs/promises';
-import { join } from 'path';
-import { scanDirectory } from '../utils/scanDirectory.js';
+import { readFile, access, readdir } from 'fs/promises';
+import { join, basename, extname } from 'path';
 
 const METAGAMES_PATH = process.env.WALDZELL_METAGAMES_PATH ?? join(process.cwd(), 'src/resources/metagames');
 
@@ -33,6 +32,31 @@ const DESCRIPTIONS: Record<string, string> = {
   'virgil-protocol': 'Deliberate innovation framework based on Virgil Abloh 3% Rule - change only what must change',
   'wisdom-distillation': 'Extract strategic principles from tactical implementations through systematic synthesis'
 };
+
+interface ScanResult {
+  name: string;
+  fullPath: string;
+}
+
+async function scanDirectory(dir: string, prefix: string = ''): Promise<ScanResult[]> {
+  const results: ScanResult[] = [];
+  const entries = await readdir(dir, { withFileTypes: true });
+  
+  for (const entry of entries) {
+    if (entry.isDirectory()) {
+      const subPath = join(dir, entry.name);
+      const newPrefix = prefix ? `${prefix}/${entry.name}` : entry.name;
+      const subResults = await scanDirectory(subPath, newPrefix);
+      results.push(...subResults);
+    } else if (entry.isFile() && extname(entry.name).toLowerCase() === '.md') {
+      const name = basename(entry.name, '.md');
+      const fullPath = prefix ? `${prefix}/${name}` : name;
+      results.push({ name, fullPath });
+    }
+  }
+  
+  return results;
+}
 
 export async function listResources() {
   const scanResults = await scanDirectory(METAGAMES_PATH);
