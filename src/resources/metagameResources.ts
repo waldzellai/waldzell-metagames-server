@@ -1,5 +1,6 @@
-import { readdir, readFile } from 'fs/promises';
-import { basename, extname, join } from 'path';
+import { readFile, access } from 'fs/promises';
+import { join } from 'path';
+import { scanDirectory } from '../utils/scanDirectory.js';
 
 const METAGAMES_PATH = process.env.WALDZELL_METAGAMES_PATH ?? join(process.cwd(), 'src/resources/metagames');
 
@@ -34,18 +35,13 @@ const DESCRIPTIONS: Record<string, string> = {
 };
 
 export async function listResources() {
-  const entries = await readdir(METAGAMES_PATH, { withFileTypes: true });
-  const resources = entries
-    .filter(e => e.isFile() && extname(e.name).toLowerCase() === '.md')
-    .map(e => {
-      const name = basename(e.name, '.md');
-      return {
-        uri: `metagame://${name}`,
-        name,
-        description: DESCRIPTIONS[name] || `Metagame workflow: ${name}`,
-        mimeType: "text/markdown"
-      };
-    });
+  const scanResults = await scanDirectory(METAGAMES_PATH);
+  const resources = scanResults.map(result => ({
+    uri: `metagame://${result.fullPath}`,
+    name: result.name,
+    description: DESCRIPTIONS[result.name] || `Metagame workflow: ${result.name}`,
+    mimeType: "text/markdown"
+  }));
   return { resources };
 }
 
@@ -53,9 +49,24 @@ export async function readResource(uri: string) {
   if (!uri.startsWith('metagame://')) {
     throw new Error(`Invalid resource URI: ${uri}`);
   }
-  const name = uri.slice('metagame://'.length);
+  const path = uri.slice('metagame://'.length);
+  
   try {
-    const filePath = join(METAGAMES_PATH, `${name}.md`);
+    // Try direct path first (handles nested structure)
+    let filePath = join(METAGAMES_PATH, `${path}.md`);
+    
+    // Check if file exists
+    try {
+      await access(filePath);
+    } catch {
+      // If not found, might be a flat name - scan to find it
+      const scanResults = await scanDirectory(METAGAMES_PATH);
+      const match = scanResults.find(r => r.name === path || r.fullPath === path);
+      if (match) {
+        filePath = join(METAGAMES_PATH, `${match.fullPath}.md`);
+      }
+    }
+    
     const content = await readFile(filePath, 'utf-8');
     return {
       contents: [{
